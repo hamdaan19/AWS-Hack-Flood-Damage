@@ -1,6 +1,10 @@
 from tensorflow import keras
 from tensorflow.keras import layers
 
+def get_model(img_size, in_channels, classes):        
+        UNET_model = Unet_xception(img_size=img_size, in_channels=in_channels, classes=classes)
+        return UNET_model.model
+
 class Unet_xception():
     def __init__(self, img_size, in_channels, classes):
         self.img_size = img_size
