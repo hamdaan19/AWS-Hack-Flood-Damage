@@ -1,4 +1,5 @@
 from PIL import Image
+from make_predictions import make_predictions
 import os
 #inputing image to split into pieces
 filename = 'Floods.jpg'
@@ -15,7 +16,8 @@ for xi in range(0,width,400):
 
         out = os.path.join('outputdir', f'{name}_{xi}_{yi}{ext}')
         print('%s %s'%(filename,box))
-        img.crop(box).save(out)  # save the pieces as output
+        current_img = img.crop(box)  # save the pieces as output
+        get_pred = make_predictions(current_img)
 
 print('Image splitted succesfully')
 
