@@ -1,0 +1,1 @@
+This folder contains all supplementary files of this project such as images, hyperlinks, etc. 
