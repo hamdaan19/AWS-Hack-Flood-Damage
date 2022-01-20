@@ -3,6 +3,7 @@ from IPython.display import Image, display
 from tensorflow import keras
 from PIL import ImageOps, Image
 from tqdm import tqdm
+import os
 
 def display_mask_predictions(output): # takes a numpy array of dimensions: (height, width, num_classes)
     mask = np.argmax(output, axis=-1)
@@ -45,3 +46,36 @@ def get_rgb_segmented(image_array, label, fg_color=[255, 0, 0], bg_color=[0, 0, 
     
     return im
     
+def split_image(path, split_size=(240, 320), save=False): # split_size=(height, width)
+    filename = os.path.basename(path)
+    name, ext = os.path.splitext(filename)
+    
+    img = Image.open(path)
+    width, height = img.size
+    
+    out_list = []
+    row_list = []
+    i = 0
+    j = 0
+    
+    for yi in range(0, height, split_size[0]):
+        for xi in range(0, width, split_size[1]):
+            box = (
+                xi,
+                yi,
+                xi+split_size[1] if xi+split_size[1] < width else width-1,
+                yi+split_size[0] if yi+split_size[0] < height else height-1,
+            )
+            current_img = img.crop(box)
+            row_list.append(current_img)
+            if save == True:
+                out_path = os.path.join("../assets/output_dir", f"{name}_{i}_{j}{ext}")
+                current_img.save(out_path)
+            j += 1
+            
+        out_list.append(row_list)
+        row_list = [] # Empytying the list
+        j = 0         # Reseting the variable
+        i += 1
+        
+    return out_list
