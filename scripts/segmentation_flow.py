@@ -2,19 +2,24 @@ import os
 from Utils import split_image
 import numpy as np
 from unet_xception_model import get_model
+from Utils import highlight_labels
+import tensorflow as tf
+from tqdm import tqdm
 
 IMG_LIST = os.listdir("../assets/input_dir")
 SPLIT_SIZE = (240, 320) # (height, width)
+IN_DIR = "../assets/input_dir"
 OUT_DIR = "../assets/output_dir"
 MODEL_PATH = "archive/UNET_X/UNET_X_floodnet.ckpt"
 
 def load_model():
     model = get_model(img_size=SPLIT_SIZE, in_channels=3, classes=10)
-    model.load_weights(MODEL_PATH)
+    model.load_weights(MODEL_PATH).expect_partial()
     return model
 
 def predict(image):
     img_arr = np.array(image)
+    img_arr = img_arr[...,:3]
     # Check if (the split) img_arr is of correct size, 
     # else pad the array to the correct size.
     if (img_arr.shape[0] == SPLIT_SIZE[0] and img_arr.shape[1] == SPLIT_SIZE[1]):
@@ -40,9 +45,10 @@ def main():
     for n, img_path in enumerate(IMG_LIST): 
         name, ext = os.path.splitext(img_path)
         
-        split_img_list = split_image(img_path, split_size=SPLIT_SIZE)
-        for img_row in split_img_list:
+        split_img_list = split_image(os.path.join(IN_DIR, img_path), split_size=SPLIT_SIZE)
+        for img_row in tqdm(split_img_list):
             for img in img_row:
+                #print(f"HELOOOOOOO: {img.size} and {np.array(img)[...,:3].shape}")
                 pred_arr = predict(img)
                 pred_arr = np.squeeze(pred_arr, axis=0)
                 row_list.append(pred_arr)
