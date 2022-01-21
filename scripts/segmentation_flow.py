@@ -7,19 +7,21 @@ import tensorflow as tf
 from tqdm import tqdm
 
 IMG_LIST = os.listdir("../assets/input_dir")
+print(IMG_LIST)
 SPLIT_SIZE = (240, 320) # (height, width)
 IN_DIR = "../assets/input_dir"
 OUT_DIR = "../assets/output_dir"
 MODEL_PATH = "archive/UNET_X/UNET_X_floodnet.ckpt"
 
-def load_model():
-    model = get_model(img_size=SPLIT_SIZE, in_channels=3, classes=10)
-    model.load_weights(MODEL_PATH).expect_partial()
-    return model
+tf.keras.backend.clear_session()
+MODEL = get_model(img_size=SPLIT_SIZE, in_channels=3, classes=10)
+MODEL.load_weights(MODEL_PATH)
+    
 
 def predict(image):
     img_arr = np.array(image)
-    img_arr = img_arr[...,:3]
+    if img_arr.shape[-1] == 4:
+        img_arr = img_arr[...,:3]
     # Check if (the split) img_arr is of correct size, 
     # else pad the array to the correct size.
     if (img_arr.shape[0] == SPLIT_SIZE[0] and img_arr.shape[1] == SPLIT_SIZE[1]):
@@ -30,8 +32,7 @@ def predict(image):
         img_arr = np.pad(img_arr, ((0,pad_height), (0,pad_width), (0,0)), constant_values=0)
     
     img_arr = np.expand_dims(img_arr, axis=0)
-    model = load_model()
-    prediction = model.predict(x=img_arr)
+    prediction = MODEL.predict(x=img_arr)
     
     return prediction # Returns nparray of size (1, height, width, channels #10 )
 
@@ -48,7 +49,6 @@ def main():
         split_img_list = split_image(os.path.join(IN_DIR, img_path), split_size=SPLIT_SIZE)
         for img_row in tqdm(split_img_list):
             for img in img_row:
-                #print(f"HELOOOOOOO: {img.size} and {np.array(img)[...,:3].shape}")
                 pred_arr = predict(img)
                 pred_arr = np.squeeze(pred_arr, axis=0)
                 row_list.append(pred_arr)
@@ -58,10 +58,11 @@ def main():
             main_list.append(concat_row) 
         # Concatenate all arrays in main_list. Note the axis.
         full_mask = np.concatenate((main_list[:]), axis=0)
-        highlighted_img = highlight_labels(full_mask, label=4)
+        highlighted_img = highlight_labels(full_mask, fg_color=[50, 255, 0], label=6)
         
         # Save the image in the output directory
-        highlighted_img.save(os.path.join(OUT_DIR, f"{name}_{n}{ext}"))
+        highlighted_img.save(os.path.join(OUT_DIR, f"{name}_highlighted{ext}"))
+        main_list = []
                 
 
 if __name__ == "__main__":
