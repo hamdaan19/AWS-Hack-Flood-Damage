@@ -5,6 +5,9 @@ from PIL import ImageOps, Image
 from tqdm import tqdm
 import os
 
+def test_fn():
+    print("Hello World.")
+
 def display_mask_predictions(output): # takes a numpy array of dimensions: (height, width, num_classes)
     mask = np.argmax(output, axis=-1)
     mask = np.reshape(mask, (240, 320, 1))
