@@ -80,3 +80,12 @@ def split_image(path, split_size=(240, 320), save=False): # split_size=(height, 
         row_list = [] # Empytying the list
         
     return out_list
+
+#make_prediction function used to classify pieces of img for flood/non-flood
+def make_predictions(image):
+    my_model = keras.models.load_model("vgg_classification_model")
+    image_np = np.array(image)
+    prediction = my_model.predict(x=image_np)
+    output = np.argmax(prediction, axis=1)
+    
+    return output
