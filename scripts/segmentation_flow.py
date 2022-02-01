@@ -5,6 +5,7 @@ from unet_xception_model import get_model
 from Utils import highlight_labels
 import tensorflow as tf
 from tqdm import tqdm
+from PIL import ImageFilter
 
 IMG_LIST = os.listdir("../assets/input_dir")
 print(IMG_LIST)
@@ -58,10 +59,12 @@ def main():
             main_list.append(concat_row) 
         # Concatenate all arrays in main_list. Note the axis.
         full_mask = np.concatenate((main_list[:]), axis=0)
-        highlighted_img = highlight_labels(full_mask, fg_color=[50, 255, 0], label=6)
+        highlighted_img = highlight_labels(full_mask, fg_color=[[255, 255, 0], [50, 50, 255]], label=[4, 3])
+        # Soften Edges
+        highlighted_softened_img = highlighted_img.filter(ImageFilter.ModeFilter(size=10))
         
         # Save the image in the output directory
-        highlighted_img.save(os.path.join(OUT_DIR, f"{name}_highlighted{ext}"))
+        highlighted_softened_img.save(os.path.join(OUT_DIR, f"{name}_highlighted{ext}"))
         main_list = []
                 
 

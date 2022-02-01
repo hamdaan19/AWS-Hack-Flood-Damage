@@ -22,7 +22,7 @@ def display_mask(output): # takes a numpy array of dimensions: (height, width)
     return mask
 
 
-def highlight_labels(image_array, label, fg_color=[255, 255, 0], bg_color=[0, 0, 0], save_img=False, filename="rgb_img.png"):
+def highlight_labels(image_array, label, fg_color=[[255, 255, 0]], bg_color=[0, 0, 0], save_img=False, filename="rgb_img.png"):
     '''
     Utility for converting a prediction array of dimentions (height, width, num_classes)
     into an .png file with one label value color code. Initial name was get_rgb_segmented() 
@@ -37,8 +37,10 @@ def highlight_labels(image_array, label, fg_color=[255, 255, 0], bg_color=[0, 0,
     
     for i in tqdm(range(img_arr.shape[0])):
         for j in range(img_arr.shape[1]):
-            if img_arr[i][j] == label:
-                new_array[i][j] = fg_color
+            if img_arr[i][j] in label:
+                for idx in range(len(label)):
+                    if img_arr[i][j] == label[idx]:
+                        new_array[i][j] = fg_color[idx]
             else: 
                 new_array[i][j] = bg_color
     
