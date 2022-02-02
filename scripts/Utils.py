@@ -89,3 +89,10 @@ def make_predictions(image):
     output = np.argmax(prediction, axis=1)
     
     return output
+
+def get_project_dir_path(proj_dir_name="AWS-Hack-Flood-Damage"):
+    current_dir = os.getcwd()
+    index = current_dir.find(proj_dir_name, 0, len(current_dir))
+    proj_dir_path = current_dir[:index+len(proj_dir_name)]
+
+    return proj_dir_path

@@ -2,22 +2,21 @@ import os
 from Utils import split_image
 import numpy as np
 from unet_xception_model import get_model
-from Utils import highlight_labels
+from Utils import highlight_labels, get_project_dir_path
 import tensorflow as tf
 from tqdm import tqdm
 from PIL import ImageFilter
 
-IMG_LIST = os.listdir("../assets/input_dir")
-print(IMG_LIST)
+PROJECT_DIR = get_project_dir_path()
+
 SPLIT_SIZE = (240, 320) # (height, width)
-IN_DIR = "../assets/input_dir"
-OUT_DIR = "../assets/output_dir"
-MODEL_PATH = "archive/UNET_X/UNET_X_floodnet.ckpt"
+IN_DIR = os.path.join(PROJECT_DIR, "assets/input_dir")
+OUT_DIR = os.path.join(PROJECT_DIR, "assets/output_dir")
+MODEL_PATH = os.path.join(PROJECT_DIR, "scripts/archive/UNET_X/UNET_X_floodnet.ckpt")
 
 tf.keras.backend.clear_session()
 MODEL = get_model(img_size=SPLIT_SIZE, in_channels=3, classes=10)
 MODEL.load_weights(MODEL_PATH)
-    
 
 def predict(image):
     img_arr = np.array(image)
@@ -39,6 +38,9 @@ def predict(image):
 
 
 def main():
+    IMG_LIST = os.listdir(os.path.join(PROJECT_DIR, "assets/input_dir"))
+    print(IMG_LIST)
+
     row_list = []  # 1D list containing nparrays in a row fashion
     main_list = [] # 2D list containing lists (row_list) containing nparrays 
     
