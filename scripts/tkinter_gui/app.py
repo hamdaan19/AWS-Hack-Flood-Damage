@@ -118,5 +118,18 @@ def main():
     ### End of Tkinter Loop ###
 
 if __name__ == "__main__":
+    ### Get Project directory ###
     PROJ_DIR = project_dir_path()
+
+    ### Create Input and Output directories ###
+    input_dir = os.path.join(PROJ_DIR, "assets/input_dir")
+    output_dir = os.path.join(PROJ_DIR, "assets/output_dir")
+    if not os.path.exists(input_dir):
+        os.makedirs(input_dir)
+        print("Created directory: {}".format(input_dir))
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        print("Created directory: {}".format(output_dir))
+    
+    ### Call main function ###
     main()
