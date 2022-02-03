@@ -3,7 +3,6 @@ from tkinter import ttk
 from tkinter.ttk import Frame
 from PIL import Image, ImageTk
 import os
-from matplotlib.pyplot import text
 import sys
 from helper import *
 
