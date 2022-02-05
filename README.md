@@ -70,7 +70,7 @@ The images below show a sample of both tasks after being performed on two images
 
 2. [Hurricane Damage Dataset](https://ieee-dataport.org/open-access/detecting-damaged-buildings-post-hurricane-satellite-imagery-based-customized) by Quoc Dung Cao *(University of Washington)* and Youngjun Choe *(University of Washington)*. 
 
-   > The data are satellite images from Texas after Hurricane Harvey divided into two groups (damage and no_damage)... All images are in JPEG format, the class label is the name of the super folder containing the images
+   > The data are satellite images from Texas after Hurricane Harvey divided into two groups (damage and no_damage) ... All images are in JPEG format, the class label is the name of the super folder containing the images
 
    * Folder structure of the dataset
      ```
