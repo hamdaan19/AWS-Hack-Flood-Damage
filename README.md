@@ -4,7 +4,11 @@ This project was made for AWS Disaster Response Hackathon. This repository conta
 
 ## Functionality
 The project is focused on the response phase of a disaster life cycle. It provides two basic functions. 
-* <b>Identify flooded and non-flooded roads.</b> This can be useful for various tasks (transportation and mobility) such as planning a route to a particular location when some roads are inundated with water.
-* <b>Identify damaaged regions (broken houses or flooded parts).</b> This can be useful to organization in estimating which areas in a town or city have been affected the most, thereby allowing them to properly direct their efforts. 
-* <b>Basic Graphical User Interface</b>/ This allows users to upload their aerial images (from UAV or Satellite) and easily implement the above mentioned functions. More features can be implemented in the future.  
+* **Road Connectivity: *Identify flooded and non-flooded roads.*** This can be useful for various tasks (transportation and mobility) such as planning a route to a particular location when some roads are inundated with water. It gives a basic overview of connectivity of roads which flooded and non-flooded. 
+* **Damaged Regions: *Identify damaaged regions (broken houses or flooded parts).*** This can be useful to organization in estimating which areas in a town or city have been affected the most, thereby allowing them to properly direct their efforts. 
+* **Basic Graphical User Interface.**</b> This allows users to upload their aerial images (from UAV or Satellite) and easily implement the above mentioned functions. More features can be implemented in the future.  
+
+<p align="center">
+  <img src="assets/images/GUI_init_screen.png" style="height: 300px; width: 547px;"/>
+</p>
 
