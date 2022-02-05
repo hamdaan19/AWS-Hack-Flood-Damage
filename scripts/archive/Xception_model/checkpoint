@@ -1,2 +1,0 @@
-model_checkpoint_path: "Xception_damage_classification.ckpt"
-all_model_checkpoint_paths: "Xception_damage_classification.ckpt"

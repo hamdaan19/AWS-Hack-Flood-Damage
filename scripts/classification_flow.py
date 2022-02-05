@@ -9,7 +9,7 @@ PROJECT_DIR = get_project_dir_path()
 SPLIT_SIZE = (128, 128)
 IN_DIR = os.path.join(PROJECT_DIR, "assets/input_dir")
 OUT_DIR = os.path.join(PROJECT_DIR, "assets/output_dir")
-MODEL_PATH = os.path.join(PROJECT_DIR, "scripts/archive/Xception_model/Xception_damage_classification.ckpt")
+MODEL_PATH = os.path.join(PROJECT_DIR, "models/Xception_model/Xception_damage_classification.ckpt")
 
 tf.keras.backend.clear_session()
 MODEL = get_xception_model()

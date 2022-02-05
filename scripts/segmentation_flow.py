@@ -12,7 +12,7 @@ PROJECT_DIR = get_project_dir_path()
 SPLIT_SIZE = (240, 320) # (height, width)
 IN_DIR = os.path.join(PROJECT_DIR, "assets/input_dir")
 OUT_DIR = os.path.join(PROJECT_DIR, "assets/output_dir")
-MODEL_PATH = os.path.join(PROJECT_DIR, "scripts/archive/UNET_X/UNET_X_floodnet.ckpt")
+MODEL_PATH = os.path.join(PROJECT_DIR, "models/UNET_X/UNET_X_floodnet.ckpt")
 
 tf.keras.backend.clear_session()
 MODEL = get_model(img_size=SPLIT_SIZE, in_channels=3, classes=10)

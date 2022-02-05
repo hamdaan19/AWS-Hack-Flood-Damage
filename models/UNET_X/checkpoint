@@ -1,0 +1,2 @@
+model_checkpoint_path: "UNET_X_floodnet.ckpt"
+all_model_checkpoint_paths: "UNET_X_floodnet.ckpt"
