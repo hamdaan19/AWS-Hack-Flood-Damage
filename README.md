@@ -29,8 +29,8 @@ Weights of trained models are stored in `AWS-Hack-Flood-Damage/models/`. They ca
 ## Usage & Instructions 
 1. Git clone the repository on your local machine. 
 2. Change directory to to `Your-Folder-Path/AWS-Hack-Flood-Damage/scripts/tkinter_gui/` and run `app.py`.
-3. A new window will appear as shown above. Click on the *Browse* button and choose a file. 
+3. A new window will appear as shown in the image above. Click on the ***Browse*** button and choose a file. 
 4. Select the task you want to perform on the image: *Road connectivity* or *Damaged Regions*.
-5. Click on the *Start Process* button to begin the process and wait till you image gets loaded in the application. You can also observe the progress of the task in the terminal window. 
+5. Click on the ***Start Process*** button to begin the process and wait till you image gets loaded in the application. You can also observe the progress of the task in the terminal window. 
 
 The images below show a sample of both tasks after being performed on two images. The images chosen can be of any size and resolution. 
