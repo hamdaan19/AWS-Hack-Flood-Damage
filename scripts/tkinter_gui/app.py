@@ -38,7 +38,7 @@ def main():
     logo_label.pack(side=tk.TOP)
 
     # powered by
-    T = tk.Label(frame, text="powered by", justify=tk.CENTER, font=("Arial", 10))
+    T = tk.Label(frame, text="Powered by", justify=tk.CENTER, font=("Arial", 10))
     #T.grid(column=1, row=1, pady=0)
     T.pack(side=tk.TOP)
 
@@ -93,7 +93,7 @@ def main():
     task_dropdown = ttk.Combobox(canvas_BL_frame, width=17, textvariable=task_type)
     task_dropdown['values'] = (
         "Road Connectivity",
-        "Building Damage",
+        "Damaged Regions",
     )
     task_dropdown.current(0)
     task_dropdown.grid(column=1, row=1, pady=10)

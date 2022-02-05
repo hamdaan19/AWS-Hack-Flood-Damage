@@ -44,7 +44,7 @@ def start_process(frame, btn_text, task_type):
         end_text.grid(column=0, row=1)
         print("\nProcess is finished!")
 
-    elif task_type == "Building Damage":
+    elif task_type == "Damaged Regions":
         classification_flow.main()
         # Display processed image
         proj_dir = get_project_dir_path()
