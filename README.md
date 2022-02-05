@@ -45,5 +45,23 @@ The images below show a sample of both tasks after being performed on two images
 <p align="center"><small>Green represents Non-Damaged regions and Red represents Damaged regions.</small></p>
 
 ## Datasets
-1. [FloodNet Dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021). 
+1. [FloodNet Dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021)
    > The data is collected with a small UAS platform, DJI Mavic Pro quadcopters, after Hurricane Harvey. The whole dataset has 2343 images, divided into training (~60%), validation (~20%), and test (~20%) sets.
+   Folder structure of FloodNet Dataset Track 1:  
+   ```
+   - FloodNet Challenge @ EARTHVISION 2021 - Track 1
+       - Test
+           - image 
+       - Train
+           - Labeled
+               - Flooded
+                   - image
+                   - mask 
+               - Non-Flooded 
+                   - image
+                   - mask 
+           - Unlabeled 
+               - image 
+       - Validation 
+           - image 
+    ```
