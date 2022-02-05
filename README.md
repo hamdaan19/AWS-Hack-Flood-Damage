@@ -37,4 +37,6 @@ The images below show a sample of both tasks after being performed on two images
 <p align="center">
   <img src="assets/images/road_connectivity.png" style="height: 300px; width: 633px;"/>
 </p>
-
+<p align="center">
+  <img src="assets/images/damaged_regions.png" style="height: 300px; width: 673px;"/>
+</p>
