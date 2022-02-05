@@ -25,3 +25,8 @@ Weights of trained models are stored in `AWS-Hack-Flood-Damage/models/`. They ca
 | --- | --- | --- | --- | --- | --- |
 | 1. | **U-NET-like model.** | Used for segmentation done on aerial images to identify flooded and non-flooded roads | Similar to U-Net architecture. See [here](https://github.com/hamdaan19/AWS-Hack-Flood-Damage/blob/main/scripts/unet_xception_model.py) for more details. | Semantic Segmentation | [FloodNet dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021) | 
 | 2. | **Xception model.** | Used for binary classification of 128x128 sized images as damaged or not damaged. | It uses the same architecture of Xception but with the last layer substituted with a FC layer of 2 neurons with a softmax activation. | Binary Classification | [Hurricane Damage dataset](https://www.kaggle.com/kmader/satellite-images-of-hurricane-damage) |
+
+## Usage & Instructions 
+1. Git clone the repository on your local machine. 
+2. Change directory to to `Your-Folder-Path/AWS-Hack-Flood-Damage/scripts/tkinter_gui/` and run `app.py`.
+3. A new window will appear as shown above. Click on the <button type="button">Browse</button> button.
