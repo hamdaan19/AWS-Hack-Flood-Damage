@@ -48,16 +48,17 @@ The images below show a sample of both tasks after being performed on two images
 1. [FloodNet Dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021)
    > The data is collected with a small UAS platform, DJI Mavic Pro quadcopters, after Hurricane Harvey. The whole dataset has 2343 images, divided into training (~60%), validation (~20%), and test (~20%) sets.
    * Folder structure of FloodNet Dataset Track 1:  
+  
      ```
      - FloodNet Challenge @ EARTHVISION 2021 - Track 1
          - Test
              - image 
          - Train
              - Labeled
-                 - Flooded
+                 - Flooded (52 samples)
                      - image
                      - mask 
-                 - Non-Flooded 
+                 - Non-Flooded (347 samples)
                      - image
                      - mask 
              - Unlabeled 
