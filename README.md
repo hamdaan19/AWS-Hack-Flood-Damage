@@ -73,6 +73,7 @@ The images below show a sample of both tasks after being performed on two images
    > The data are satellite images from Texas after Hurricane Harvey divided into two groups (damage and no_damage) ... All images are in JPEG format, the class label is the name of the super folder containing the images
 
    * Folder structure of the dataset
+  
      ```
      - root
          - test    # 2000 samples
@@ -88,3 +89,7 @@ The images below show a sample of both tasks after being performed on two images
              - damage
              - no_damage 
      ```
+
+## Contributors
+1. Mohammad Hamdaan, student at *Loyola-ICAM College of Engineering and Technology, Chennai, India.*
+2. Punitharaj S, student at *Loyola-ICAM College of Engineering and Technology, Chennai, India.*
