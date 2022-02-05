@@ -42,4 +42,4 @@ The images below show a sample of both tasks after being performed on two images
 <p align="center">
   <img src="assets/images/damaged_regions.png" style="height: 300px; width: 673px;"/>
 </p>
-<p align="center"><small>Green represents Non-Damaged regions and Blue represents Damaged regions.</small></p>
+<p align="center"><small>Green represents Non-Damaged regions and Red represents Damaged regions.</small></p>
