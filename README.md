@@ -8,5 +8,5 @@ The project is focused on the response phase of a disaster life cycle. It provid
 * **Damaged Regions: *Identify damaaged regions (broken houses or flooded parts).*** This can be useful to organization in estimating which areas in a town or city have been affected the most, thereby allowing them to properly direct their efforts. 
 * **Basic Graphical User Interface.**</b> This allows users to upload their aerial images (from UAV or Satellite) and easily implement the above mentioned functions. More features can be implemented in the future.  
 
-[Init screen of the GUI application](assets/images/GUI_init_screen.png "Init screen of the GUI application")
+![Init screen of the GUI application](assets/images/GUI_init_screen.png "Init screen of the GUI application")
 
