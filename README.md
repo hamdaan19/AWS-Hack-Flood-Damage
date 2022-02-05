@@ -20,6 +20,7 @@ The project relies on the following dependencies. Make sure all of the packages 
 5. [Tqdm](https://github.com/tqdm/tqdm)
 
 ## Models
+Weights of trained models are stored in `AWS-Hack-Flood-Damage/models/`. They can be loaded into a model by implementing `load_weights()` method of `tensorflow.keras.Model` class.
 | Sl. no. | Name | Description | Architecture | Task Type | Dataset | 
 | --- | --- | --- | --- | --- | --- |
 | 1. | **U-NET-like model.** | Used for segmentation done on aerial images to identify flooded and non-flooded roads | Similar to U-Net architecture. See [here](https://github.com/hamdaan19/AWS-Hack-Flood-Damage/blob/main/scripts/unet_xception_model.py) for more details. | Semantic Segmentation | [FloodNet dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021) | 
