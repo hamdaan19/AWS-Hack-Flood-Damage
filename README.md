@@ -12,7 +12,7 @@ The project is focused on the response phase of a disaster life cycle. It provid
 </p>
 
 ## Dependencies 
-The poject relies on the following dependencies. Make sure all of the packages mentioned below are installed.
+The project relies on the following dependencies. Make sure all of the packages mentioned below are installed.
 1. [TensorFlow](https://www.tensorflow.org/)
 2. [Numpy](https://numpy.org/) 
 3. [Pillow (PIL)](https://pillow.readthedocs.io/en/stable/)
@@ -23,4 +23,4 @@ The poject relies on the following dependencies. Make sure all of the packages m
 | Sl. no. | Name | Description | Architecture | Task Type | Dataset | 
 | --- | --- | --- | --- | --- | --- |
 | 1. | **U-NET-like model.** | Used for segmentation done on aerial images to identify flooded and non-flooded roads | Similar to U-Net architecture. See [here](https://github.com/hamdaan19/AWS-Hack-Flood-Damage/blob/main/scripts/unet_xception_model.py) for more details. | Semantic Segmentation | [FloodNet dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021) | 
-| 2. | **Xception model.** | used for binary classification of 128x128 sized images as damaged or not damaged. | It uses the same architecture of Xception but with the last layer substituted with a FC layer of 2 neurons with a softmax activation. | Binary Classification | [Hurricane Damage dataset](https://www.kaggle.com/kmader/satellite-images-of-hurricane-damage) |
+| 2. | **Xception model.** | Used for binary classification of 128x128 sized images as damaged or not damaged. | It uses the same architecture of Xception but with the last layer substituted with a FC layer of 2 neurons with a softmax activation. | Binary Classification | [Hurricane Damage dataset](https://www.kaggle.com/kmader/satellite-images-of-hurricane-damage) |
