@@ -36,7 +36,7 @@ Weights of trained models are stored in `AWS-Hack-Flood-Damage/models/`. They ca
 The images below show a sample of both tasks after being performed on two images. The images chosen can be of any size and resolution. 
 
 <p align="center">
-  <img src="assets/images/road_connectivity.png" style="height: 300px; width: 633px;"/>
+  <img src="assets/images/road_connectivity.png" style="height: 319px; width: 673px;"/>
 </p>
 <p align="center"><small>Yellow represents Non-Flooded roads and Blue represents Flooded roads (although blue cannot be seen in this image).</small></p>
 <p align="center">
