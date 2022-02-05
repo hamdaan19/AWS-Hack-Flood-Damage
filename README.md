@@ -34,12 +34,12 @@ Weights of trained models are stored in `AWS-Hack-Flood-Damage/models/`. They ca
 5. Click on the ***Start Process*** button to begin the process and wait till you image gets loaded in the application. You can also observe the progress of the task in the terminal window. 
 
 The images below show a sample of both tasks after being performed on two images. The images chosen can be of any size and resolution. 
-<div class="item">
-  <p algin="center">
-    <img src="assets/images/road_connectivity.png" style="height: 300px; width: 633px;"/>
+
+<p algin="center">
+  <img src="assets/images/road_connectivity.png" style="height: 300px; width: 633px;"/>
   <p>Yellow represents non-flooded roads and Blue represents flooded roads (although blue cannot be seen in this image.</p>
-  </p>
-</div>
+</p>
+
 <p align="center">
   <img src="assets/images/damaged_regions.png" style="height: 300px; width: 673px;"/>
 </p>
