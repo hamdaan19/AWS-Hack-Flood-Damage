@@ -95,5 +95,5 @@ The images below show a sample of both tasks after being performed on two images
      ```
 
 ## Contributors
-1. **Mohammad Hamdaan**, student at *Loyola-ICAM College of Engineering and Technology, Chennai, India*.
-2. **Punitharaj S**, student at *Loyola-ICAM College of Engineering and Technology, Chennai, India*.
+1. [**Mohammad Hamdaan**](https://github.com/hamdaan19), student at *Loyola-ICAM College of Engineering and Technology, Chennai, India*.
+2. [**Punitharaj S**](https://github.com/Punitharaj-s), student at *Loyola-ICAM College of Engineering and Technology, Chennai, India*.
