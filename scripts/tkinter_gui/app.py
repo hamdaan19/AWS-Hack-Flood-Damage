@@ -59,47 +59,49 @@ def main():
 
     # Creating BOTTOM LEFT and RIGHT Frames
     bottom_left_frame = tk.Frame(bottom_frame, width=200, height=200)
-    bottom_left_frame.pack(side=tk.LEFT, padx=20)
+    bottom_left_frame.pack(side=tk.LEFT, padx=10)
     bottom_right_frame = tk.Frame(bottom_frame, borderwidth="1p", relief=tk.GROOVE, padx=10, pady=10)
-    bottom_right_frame.pack(side=tk.RIGHT, padx=20)
-    bottom_end_frame = tk.Frame(bottom_frame)
-    bottom_end_frame.pack(side=tk.BOTTOM, pady=5)
+    bottom_right_frame.pack(side=tk.RIGHT, padx=10)
 
     # Create a canvas in BOTTOM LEFT FRAME
     canvas_BL = tk.Canvas(bottom_left_frame, height=400, width=300)
     canvas_BL.pack(side=tk.TOP)
     #canvas_BL.grid(columnspan=2, rowspan=3)
 
+    # Creating a frame inside canvas_BL
+    canvas_BL_frame = tk.Frame(canvas_BL)
+    canvas_BL_frame.grid(column=0, row=0, padx=10, pady=10)
+
 
     # WIDGET: Choose a File
-    choose_T = tk.Label(canvas_BL, text="Choose a file:", font=("Arial", 11), padx=10)
+    choose_T = tk.Label(canvas_BL_frame, text="Choose a file:", font=("Arial", 11), padx=10)
     choose_T.grid(column=0, row=0)
 
     # WIDGET: Browse button
     browse_text = tk.StringVar()
     browse_text.set("Browse")
-    browse_btn = tk.Button(canvas_BL, textvariable=browse_text, font=("Calibri", 10),
+    browse_btn = tk.Button(canvas_BL_frame, textvariable=browse_text, font=("Calibri", 10),
         command=lambda:open_file(root, browse_text, INPUT_DIR), width=16, bd="1.5p")
-    browse_btn.grid(column=1, row=0)
+    browse_btn.grid(column=1, row=0,)
 
     # WIDGET: Select a Task
-    task_T = tk.Label(canvas_BL, text="Select a task:", font=("Arial", 11), padx=10)
-    task_T.grid(column=0, row=1, pady=10)
+    task_T = tk.Label(canvas_BL_frame, text="Select a task:", font=("Arial", 11),)
+    task_T.grid(column=0, row=1)
 
     # WIDGET: Combobox
     task_type = tk.StringVar()
-    task_dropdown = ttk.Combobox(canvas_BL, width=17, textvariable=task_type)
+    task_dropdown = ttk.Combobox(canvas_BL_frame, width=17, textvariable=task_type)
     task_dropdown['values'] = (
         "Road Connectivity",
         "Building Damage",
     )
     task_dropdown.current(0)
-    task_dropdown.grid(column=1, row=1)
+    task_dropdown.grid(column=1, row=1, pady=10)
 
     # WIDGET: Start Button
     start_btn_text = tk.StringVar()
     start_btn_text.set("Start Process")
-    start_btn = tk.Button(canvas_BL, textvariable=start_btn_text, font=("Calibri", 10),
+    start_btn = tk.Button(canvas_BL_frame, textvariable=start_btn_text, font=("Calibri", 10),
         command=lambda:start_process(bottom_right_frame, start_btn_text, task_type.get()),
         width=25,
     )

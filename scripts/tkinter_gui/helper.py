@@ -7,44 +7,63 @@ import tkinter as tk
 CURRENT_DIR = os.getcwd()
 sys.path.insert(1, os.path.join(CURRENT_DIR, ".."))
 import segmentation_flow
+import classification_flow
 from Utils import get_project_dir_path
 
 def open_file(root, btn_text, input_dir):
     btn_text.set("Loading...")
-    file = askopenfile(parent=root, mode='rb', title="Choose a file", filetypes=[("PNG file", ".png")])
+    file = askopenfile(parent=root, mode='rb', title="Choose a file", filetypes=[("PNG file", ".png"), ("JPEG file", ".jpeg")])
     if file:
+        name = "user_image"
         clear_directory(input_dir)
         img = Image.open(io.BytesIO(file.read()))
-        img.save(os.path.join(input_dir, "test.png"))
-        print("File was successfully loaded.")
+        img.save(os.path.join(input_dir, f"{name}.png"))
+        print("\nFile was successfully loaded.")
     btn_text.set("Browse")
     
 
 def start_process(frame, btn_text, task_type):
-    btn_text.set("Processing...")
+    print("\nProcess as started...")
     if task_type == "Road Connectivity":
         segmentation_flow.main()
+        # Display processed image
+        proj_dir = get_project_dir_path()
+        output_dir = os.path.join(proj_dir, "assets/output_dir")
+        filename = os.listdir(output_dir)[0]
+        proc_img = Image.open(os.path.join(output_dir, filename))
+        proc_img = auto_resize(proc_img, proc_img.size)
+        proc_img = ImageTk.PhotoImage(proc_img)
+        proc_img_label = tk.Label(frame, image=proc_img)
+        proc_img_label.image = proc_img
+        proc_img_label.grid(column=0, row=0)
+
+        # Display End Text
+        end_text = tk.Label(frame, 
+            text="Saved in AWS-Hack-Flood-Damage/assets/output_dir",
+        )
+        end_text.grid(column=0, row=1)
+        print("\nProcess is finished!")
+
+    elif task_type == "Building Damage":
+        classification_flow.main()
+        # Display processed image
+        proj_dir = get_project_dir_path()
+        output_dir = os.path.join(proj_dir, "assets/output_dir")
+        filename = os.listdir(output_dir)[0]
+        proc_img = Image.open(os.path.join(output_dir, filename))
+        proc_img = auto_resize(proc_img, proc_img.size)
+        proc_img = ImageTk.PhotoImage(proc_img)
+        proc_img_label = tk.Label(frame, image=proc_img)
+        proc_img_label.image = proc_img
+        proc_img_label.grid(column=0, row=0)
+
+        # Display End Text
+        end_text = tk.Label(frame, 
+            text="Saved in AWS-Hack-Flood-Damage/assets/output_dir",
+        )
+        end_text.grid(column=0, row=1)
     else:
         print("Task not defined.")
-
-    # Display processed image
-    proj_dir = get_project_dir_path()
-    output_dir = os.path.join(proj_dir, "assets/output_dir")
-    filename = os.listdir(output_dir)[0]
-    proc_img = Image.open(os.path.join(output_dir, filename))
-    proc_img = auto_resize(proc_img, proc_img.size)
-    proc_img = ImageTk.PhotoImage(proc_img)
-    proc_img_label = tk.Label(frame, image=proc_img)
-    proc_img_label.image = proc_img
-    proc_img_label.grid(column=0, row=0)
-
-    # Display End Text
-    end_text = tk.Label(frame, 
-        text="Saved in AWS-Hack-Flood-Damage/assets/output_dir",
-    )
-    end_text.grid(column=0, row=1)
-
-    btn_text.set("Start Process")
 
 def auto_resize(image, size, desired_height=500):
     width, height = size

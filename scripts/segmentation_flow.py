@@ -39,7 +39,6 @@ def predict(image):
 
 def main():
     IMG_LIST = os.listdir(os.path.join(PROJECT_DIR, "assets/input_dir"))
-    print(IMG_LIST)
 
     row_list = []  # 1D list containing nparrays in a row fashion
     main_list = [] # 2D list containing lists (row_list) containing nparrays 
@@ -50,6 +49,7 @@ def main():
         name, ext = os.path.splitext(img_path)
         
         split_img_list = split_image(os.path.join(IN_DIR, img_path), split_size=SPLIT_SIZE)
+        print("\nWorking on split-images row by row:")
         for img_row in tqdm(split_img_list):
             for img in img_row:
                 pred_arr = predict(img)

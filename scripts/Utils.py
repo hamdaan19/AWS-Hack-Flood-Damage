@@ -27,6 +27,7 @@ def highlight_labels(image_array, label, fg_color=[[255, 255, 0]], bg_color=[0, 
     Utility for converting a prediction array of dimentions (height, width, num_classes)
     into an .png file with one label value color code. Initial name was get_rgb_segmented() 
     '''
+    print("Working on image-pixel labels: ")
     img_arr = np.argmax(image_array, axis=-1) # (h, w, classes) -> (h, w)
     img_arr = np.uint8(img_arr)
     
@@ -73,7 +74,7 @@ def split_image(path, split_size=(240, 320), save=False): # split_size=(height, 
             current_img = img.crop(box)
             row_list.append(current_img)
             if save == True:
-                out_path = os.path.join("../assets/output_dir", f"{name}_{i}_{j}{ext}")
+                out_path = os.path.join("../assets/output_dir/data", f"{name}_{i}_{j}{ext}")
                 current_img.save(out_path)
             
         out_list.append(row_list)

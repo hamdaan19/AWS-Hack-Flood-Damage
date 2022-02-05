@@ -2,6 +2,8 @@ import os
 from Utils import *
 from xception_classification_model import get_xception_model
 import numpy as np
+import tensorflow as tf
+from PIL import Image
 
 PROJECT_DIR = get_project_dir_path()
 SPLIT_SIZE = (128, 128)
@@ -34,7 +36,6 @@ def predict(image, split_size):
 
 def main(split_size=SPLIT_SIZE):
     IMG_LIST = os.listdir(os.path.join(PROJECT_DIR, "assets/input_dir"))
-    print(IMG_LIST)
     
     row_list = []  # 1D list containing nparrays in a row fashion
     main_list = [] # 2D list containing lists (row_list) containing nparrays 
@@ -45,6 +46,7 @@ def main(split_size=SPLIT_SIZE):
         name, ext = os.path.splitext(img_path)
 
         split_img_list = split_image(os.path.join(IN_DIR, img_path), split_size=split_size)
+        print("\nWorking on split-images row by row:")
         for img_row in tqdm(split_img_list):
             for img in img_row:
                 pred_vector = predict(img, split_size=split_size)
@@ -61,8 +63,10 @@ def main(split_size=SPLIT_SIZE):
             row_list = []
             main_list.append(concat_row) 
         # Concatenate all arrays in main_list. Note the axis.
-        full_highlighted = np.concatenate((main[:]), axis=0)
-        full_highlighted.save(os.path.join(OUT_DIR, f"{name}_highlighted{ext}"))
+        full_highlighted = np.concatenate((main_list[:]), axis=0)
+        full_highlighted = np.uint8(full_highlighted)
+        full_highlighted_img = Image.fromarray(full_highlighted)
+        full_highlighted_img.save(os.path.join(OUT_DIR, f"{name}_highlighted{ext}"))
 
 
 if __name__ == "__main__":
