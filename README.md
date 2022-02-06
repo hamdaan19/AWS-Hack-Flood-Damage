@@ -12,7 +12,7 @@ The project is focused on the response phase of a disaster life cycle. It provid
 * **Damaged Regions: *Identify damaaged regions (broken houses or flooded parts).*** This can be useful to organization in estimating which areas in a town or city have been affected the most, thereby allowing them to properly direct their efforts. 
 * **Basic Graphical User Interface.**</b> This allows users to upload their aerial images (from UAV or Satellite) and easily implement the above mentioned functions. The GUI application was made with the Tkinter module in python. More features can be added to the GUI implemented in the future. The image below is the starting screen of the app. 
 <p align="center">
-  <img src="assets/images/GUI_init_screen.png" style="height: 300px; width: 547px;"/>
+  <img src="assets/images/GUI_init_screen.png" style="height: 300px; width: 479px;"/>
 </p>
 
 ## Dependencies 
