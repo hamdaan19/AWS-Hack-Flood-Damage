@@ -2,6 +2,10 @@
 ## About
 This project was made for AWS Disaster Response Hackathon. This repository contains code for identifying damaged regions in an aerial image. Identifying damaged objects (such as roads and buildings) in aerial images can be helpful to disaster-response organizations in responding to natural calamities faster and more efficiently. This project focuses on how organizations can respond better to damage inflicted by hurricanes and floods. The datasets used to train models contain aerial images of zones affected by hurricane Harvey.
 
+### Links
+1. YouTube Video
+2. AWS Disaster Response Hackathon submission page. 
+
 ## Functionality
 The project is focused on the response phase of a disaster life cycle. It provides two basic functions. 
 * **Road Connectivity: *Identify flooded and non-flooded roads.*** This can be useful for various tasks (transportation and mobility) such as planning a route to a particular location when some roads are inundated with water. It gives a basic overview of connectivity of roads which flooded and non-flooded. 
@@ -24,7 +28,7 @@ Weights of trained models are stored in `AWS-Hack-Flood-Damage/models/`. They ca
 | Sl. no. | Name | Description | Architecture | Task Type | Dataset | 
 | --- | --- | --- | --- | --- | --- |
 | 1. | **U-NET-like model.** | Used for segmentation done on aerial images to identify flooded and non-flooded roads | Similar to U-Net architecture. See [here](https://github.com/hamdaan19/AWS-Hack-Flood-Damage/blob/main/scripts/unet_xception_model.py) for more details. | Semantic Segmentation | [FloodNet dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021) | 
-| 2. | **Xception model.** | Used for binary classification of 128x128 sized images as damaged or not damaged. | It uses the same architecture of Xception but with the last layer substituted with a FC layer of 2 neurons with a softmax activation. | Binary Classification | [Hurricane Damage dataset](https://www.kaggle.com/kmader/satellite-images-of-hurricane-damage) |
+| 2. | **Xception model.** | Used for binary classification of 128x128 sized images as damaged or not damaged. | It uses the same architecture of Xception but with the last layer substituted with a FC layer of 2 neurons with a softmax activation. | Binary Classification | [Hurricane Damage dataset](https://ieee-dataport.org/open-access/detecting-damaged-buildings-post-hurricane-satellite-imagery-based-customized) |
 
 ## Usage & Instructions 
 1. Git clone the repository on your local machine. 
@@ -34,7 +38,62 @@ Weights of trained models are stored in `AWS-Hack-Flood-Damage/models/`. They ca
 5. Click on the ***Start Process*** button to begin the process and wait till you image gets loaded in the application. You can also observe the progress of the task in the terminal window. 
 
 The images below show a sample of both tasks after being performed on two images. The images chosen can be of any size and resolution. 
-<p align="center">
-  <img src="assets/images/road_connectivity.png" style="height: 300px; width: 633px;"/>
-</p>
 
+<p align="center">
+  <img src="assets/images/road_connectivity.png" style="height: 319px; width: 673px;"/>
+</p>
+<p align="center"><small>Yellow represents Non-Flooded roads and Blue represents Flooded roads (although blue cannot be seen in this image).</small></p>
+<p align="center">
+  <img src="assets/images/damaged_regions.png" style="height: 300px; width: 673px;"/>
+</p>
+<p align="center"><small>Green represents Non-Damaged regions and Red represents Damaged regions.</small></p>
+
+## Datasets
+1. [FloodNet Dataset](https://github.com/BinaLab/FloodNet-Challenge-EARTHVISION2021) by Computer Vision and Remote Sensing Laboratory at UMBC. 
+
+   > The data is collected with a small UAS platform, DJI Mavic Pro quadcopters, after Hurricane Harvey. The whole dataset has 2343 images, divided into training (~60%), validation (~20%), and test (~20%) sets.
+   * Folder structure of FloodNet Dataset Track 1:  
+  
+     ```
+     - FloodNet Challenge @ EARTHVISION 2021 - Track 1
+         - Test
+             - image 
+         - Train
+             - Labeled
+                 - Flooded    # 52 samples
+                     - image
+                     - mask 
+                 - Non-Flooded    # 347 samples
+                     - image
+                     - mask 
+             - Unlabeled 
+                 - image 
+         - Validation 
+             - image 
+      ```
+
+2. [Hurricane Damage Dataset](https://ieee-dataport.org/open-access/detecting-damaged-buildings-post-hurricane-satellite-imagery-based-customized) by Quoc Dung Cao *(University of Washington)* and Youngjun Choe *(University of Washington)*. 
+
+   > The data are satellite images from Texas after Hurricane Harvey divided into two groups (damage and no_damage) ... All images are in JPEG format, the class label is the name of the super folder containing the images
+
+   * Folder structure of the dataset
+  
+     ```
+     - root
+         - test    # 2000 samples
+             - damage
+             - no_damage 
+         - test_another    # 9000 samples
+             - damage
+             - no_damage
+         - train_another    # 10000 samples
+             - damage
+             - no_damage 
+         - validation_another   # 2000 samples 
+             - damage
+             - no_damage 
+     ```
+
+## Contributors
+1. [**Mohammad Hamdaan**](https://github.com/hamdaan19), student at *Loyola-ICAM College of Engineering and Technology, Chennai, India*.
+2. [**Punitharaj S**](https://github.com/Punitharaj-s), student at *Loyola-ICAM College of Engineering and Technology, Chennai, India*.
