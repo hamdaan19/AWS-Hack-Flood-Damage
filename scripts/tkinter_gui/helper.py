@@ -12,20 +12,24 @@ from Utils import get_project_dir_path
 
 def open_file(root, btn_text, input_dir):
     btn_text.set("Loading...")
-    file = askopenfile(parent=root, mode='rb', title="Choose a file", filetypes=[("PNG file", ".png"), ("JPEG file", ".jpeg")])
+    file = askopenfile(parent=root, mode='rb', title="Choose a file", 
+            filetypes=[("PNG file", ".png"), ("JPEG file", ".jpeg"), ("JPG file", ".jpg"), ])
     if file:
         name = "user_image"
         clear_directory(input_dir)
         img = Image.open(io.BytesIO(file.read()))
+        #img = img.resize((320, 240))
         img.save(os.path.join(input_dir, f"{name}.png"))
         print("\nFile was successfully loaded.")
     btn_text.set("Browse")
     
 
-def start_process(frame, btn_text, task_type):
+def start_process(root, frame, btn_text, task_type, progress_bar, per_txt):
     print("\nProcess as started...")
+    progress_bar['value'] = 0
+    root.update_idletasks()
     if task_type == "Road Connectivity":
-        segmentation_flow.main()
+        segmentation_flow.main(gui_root=root, bar=progress_bar, txt=per_txt)
         # Display processed image
         proj_dir = get_project_dir_path()
         output_dir = os.path.join(proj_dir, "assets/output_dir")
@@ -45,7 +49,7 @@ def start_process(frame, btn_text, task_type):
         print("\nProcess is finished!")
 
     elif task_type == "Damaged Regions":
-        classification_flow.main()
+        classification_flow.main(gui_root=root, bar=progress_bar, txt=per_txt)
         # Display processed image
         proj_dir = get_project_dir_path()
         output_dir = os.path.join(proj_dir, "assets/output_dir")
@@ -62,8 +66,11 @@ def start_process(frame, btn_text, task_type):
             text="Saved in AWS-Hack-Flood-Damage/assets/output_dir",
         )
         end_text.grid(column=0, row=1)
+        print("\nProcess is finished!")
     else:
         print("Task not defined.")
+    per_txt.config(text="")
+    progress_bar.stop()
 
 def auto_resize(image, size, desired_height=500):
     width, height = size

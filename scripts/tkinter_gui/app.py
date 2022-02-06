@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import HORIZONTAL, ttk
 from tkinter.ttk import Frame
 from PIL import Image, ImageTk
 import os
@@ -18,7 +18,7 @@ def project_dir_path(proj_dir_name="AWS-Hack-Flood-Damage"):
 def main():
     ### Start of Tkinter Loop ###
     root = tk.Tk()
-    root.geometry("600x300")
+    root.geometry("600x350")
     root.title("Floodie GUI Application")
     root.iconphoto(False, tk.PhotoImage(file=os.path.join(PROJ_DIR, "assets/images/icon.png")))
 
@@ -98,11 +98,18 @@ def main():
     task_dropdown.current(0)
     task_dropdown.grid(column=1, row=1, pady=10)
 
+    # WIDGET: Progress Bar and Percentage text
+    progress_bar = ttk.Progressbar(canvas_BL_frame, orient=HORIZONTAL, length=185, mode="determinate")
+    progress_bar.grid(columnspan=2, row=3, pady=10)
+    percent_text = tk.Label(canvas_BL_frame, text="")
+    percent_text.grid(columnspan=2, row=4)
+
+
     # WIDGET: Start Button
     start_btn_text = tk.StringVar()
     start_btn_text.set("Start Process")
     start_btn = tk.Button(canvas_BL_frame, textvariable=start_btn_text, font=("Calibri", 10),
-        command=lambda:start_process(bottom_right_frame, start_btn_text, task_type.get()),
+        command=lambda:start_process(root, bottom_right_frame, start_btn_text, task_type.get(), progress_bar, percent_text),
         width=25,
     )
     start_btn.grid(columnspan=2, row=2)
@@ -114,6 +121,8 @@ def main():
         wraplength=200,
     )
     blank_img_text.grid(column=0, row=0)    
+
+    #progress_bar.start(10)
 
     root.mainloop()
     ### End of Tkinter Loop ###

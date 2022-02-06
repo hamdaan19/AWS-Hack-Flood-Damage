@@ -34,7 +34,7 @@ def predict(image, split_size):
     
     return prediction # Returns One-hot encoded vector 
 
-def main(split_size=SPLIT_SIZE):
+def main(split_size=SPLIT_SIZE, gui_root=None, bar=None, txt=None):
     IMG_LIST = os.listdir(os.path.join(PROJECT_DIR, "assets/input_dir"))
     
     row_list = []  # 1D list containing nparrays in a row fashion
@@ -45,8 +45,14 @@ def main(split_size=SPLIT_SIZE):
     for img_path in IMG_LIST:
         name, ext = os.path.splitext(img_path)
 
-        split_img_list = split_image(os.path.join(IN_DIR, img_path), split_size=split_size)
+        current_img_path = os.path.join(IN_DIR, img_path)
+        split_img_list = split_image(current_img_path, split_size=split_size)
         print("\nWorking on split-images row by row:")
+
+        nRows = len(split_img_list)
+        nCols = len(split_img_list[0])
+        increment_val = 100/(nRows*nCols)
+
         for img_row in tqdm(split_img_list):
             for img in img_row:
                 pred_vector = predict(img, split_size=split_size)
@@ -58,6 +64,10 @@ def main(split_size=SPLIT_SIZE):
                     # If not damaged, color the block with GREEN
                     block_arr = np.full(split_size+(3,), [0, 255, 0])
                 row_list.append(block_arr)
+                if gui_root != None:
+                    bar['value'] += increment_val
+                    txt.config(text=f"{round(bar['value'], 1)}%")
+                    gui_root.update()
             # Concatenate all arrays in row_list. Note the axis.
             concat_row = np.concatenate((row_list[:]), axis=1)
             row_list = []
